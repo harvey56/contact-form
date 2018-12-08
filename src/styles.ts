@@ -1,13 +1,26 @@
 import { StyleRules } from '@material-ui/core/styles';
 
 export type ClassKeys =
-  | 'root';
+  | 'root'
+  | 'form'
+  | 'title';
 
 const styles: StyleRules = ({
     root: {
       display: 'flex',
-      'justify-content': 'center',
       'flex-direction': 'column',
+      'align-items': 'center',
+    },
+    form: {
+      width: '300px',
+      'align-items': 'center'
+    },
+    title: {
+      display: 'flex',
+      'justify-content': 'center'
+    },
+    button: {
+      display: 'flex',
       'align-items': 'center'
     }
   });
