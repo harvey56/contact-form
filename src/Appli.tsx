@@ -4,7 +4,7 @@ import './stylesheet.css';
 import { withStyles, WithStyles } from '@material-ui/core';
 import { StyledComponentProps } from '@material-ui/core';
 import { Formik, Field, Form, FormikProps, FieldProps } from 'formik';
-import TextField from '@material-ui/core/TextField';
+import {TextField} from '@material-ui/core';
 import { Debug } from './Debug';
 import styles, { ClassKeys } from './styles';
 import options from './options';
@@ -20,52 +20,37 @@ interface OwnProps {
 
 type Props = OwnProps & StyledComponentProps;
 
-class App extends React.Component<Props, {}> {
-
-  render() {
-
-    const { classes } = this.props;
-
-    return (
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <p>
-      //       Edit <code>src/App.tsx</code> and save to reload.
-      //     </p>
-      //     <a
-      //       className="App-link"
-      //       href="https://reactjs.org"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //     >
-      //       Learn React
-      //     </a>
-      //   </header>
-      // </div>
-
+const App: React.SFC<{}> = (props: Props) => (
       <div>
       <h1>A simple contact form, typed, using formik, and material-ui</h1>
       <Formik
-      initialValues={{firstname: '', lastname: '', email: '', initialValues: ''}}
+      initialValues={{firstname: '', lastname: '', email: ''}}
       onSubmit={(values) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
           }, 1000);
       }}
-      render={(formikBag: FormikProps<MyFormValues>): ReactElement<any> => {
+      render={(formikBag: FormikProps<MyFormValues>): JSX.Element => {
           const { values } = formikBag;
 
           return (
               <Form>
                 <Field
-                  name="firstName"
+                  name="contact form"
                   render={({ field, form }: FieldProps<MyFormValues>) => (
                     <div>
-                      <input type="text" {...field} placeholder="First Name" />
+                      <TextField  {...field} placeholder="Firstname" />
                       {form.touched.firstname &&
                         form.errors.firstname &&
                         form.errors.firstname}
+                      <TextField  {...field} placeholder="Lastname" />
+                      {form.touched.lastname &&
+                        form.errors.lastname &&
+                        form.errors.lastname}
+                      <TextField  {...field} placeholder="email" />
+                      {form.touched.email &&
+                        form.errors.email &&
+                        form.errors.email}
                     </div>
                   )}
                 />
@@ -77,7 +62,6 @@ class App extends React.Component<Props, {}> {
       />
       </div>
     );
-  }
-}
+
 
 export default withStyles(styles)(App);
