@@ -45,7 +45,7 @@ const App: React.SFC<OwnProps> = (props) => {
             }, 1000);
         }}
         validationSchema={formValidation}
-        render={(formikBag: FormikProps<MyFormValues>): JSX.Element => {
+        render={(formikBag: FormikProps<MyFormValues>): React.ReactNode => {
 
             return (
                 <Form className={classes.form}>
